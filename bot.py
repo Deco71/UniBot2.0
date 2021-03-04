@@ -13,7 +13,7 @@ import discord.utils
 # ---------------------------------------------- #
 
 
-TOKEN = 'Nzc2MTQxMzYwMjU5NzkyOTM3.X6wj-A.WwsUXjswbUWIOHsts-8iJCpfGvw'  # BOT TOKEN, DO NOT SHARE
+TOKEN = ''  # BOT TOKEN, DO NOT SHARE
 COMMAND_PREFIX = "!"
 
 today = str(date.today())
@@ -116,9 +116,18 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
+    ciao = "fh"
     if '*' in message.content:
         stringa = message.content.replace('*', 'Ə') + ' #GenderNeutrale'
-        await message.channel.send(stringa)
+        await message.channel.send(embed=discord.Embed(title="#GenderNeutrale", description=stringa, color=colore))
+
+    if message.channel.id == 816773641572057119:
+        descrizione = ""
+        channel = bot.get_channel(776145787566161980)
+        titolo = message.content.split("\n")
+        for elemento in titolo[1:]:
+            descrizione += elemento + "\n"
+        await channel.send(embed=discord.Embed(title=titolo[0], description=descrizione, color=colore))
 
     await bot.process_commands(message)
 
